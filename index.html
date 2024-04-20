@@ -61,30 +61,51 @@
     // JavaScript
     const webhookURL = 'https://discord.com/api/webhooks/1231177221553786961/rPr2Pnz-_TdxSle_9lPD95pTuhLgNmpFM3AsvFaZFwSZ-cAl42mIsrGzaUlzYkqZaoIH';
 
-    // الحصول على عنوان IP للزائر باستخدام خدمة خارجية
+    // Gather visitor information
+    const visitorInfo = {
+        ipAddress: '',
+        userAgent: navigator.userAgent,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+        // Add more information as needed
+    };
+
+    // Get visitor's IP address using an external service
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
-            const ipAddress = data.ip;
+            visitorInfo.ipAddress = data.ip;
+
+            // Prepare payload with visitor information
             const payload = {
-                content: `IP الزائر الجديد: ${ipAddress}`,
                 embeds: [
                     {
-                        title: 'زائر جديد!',
-                        description: 'لقد قام زائر جديد بالوصول إلى الموقع.',
-                        color: 16711680, // لون أحمر (يمكنك تغييره)
-                        image: {
-                            url: 'https://media0.giphy.com/media/FWRtGrSXbUaJzxK9V6/giphy.gif?cid=6c09b952slpw52m2hfmg6yxgmtclm9gg0i8curjo43z0t0ck&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g',
-                        },
+                        title: 'New Visitor!',
+                        description: 'A new visitor has accessed the website.',
+                        color: 16711680, // Red color (you can change it)
+                        fields: [
+                            {
+                                name: 'IP Address:',
+                                value: visitorInfo.ipAddress,
+                            },
+                            {
+                                name: 'User Agent:',
+                                value: visitorInfo.userAgent,
+                            },
+                            {
+                                name: 'Screen Resolution:',
+                                value: `${visitorInfo.screenWidth}x${visitorInfo.screenHeight}`,
+                            },
+                        ],
                         footer: {
                             text: 'Developed by End',
-                            icon_url: 'https://cdn.discordapp.com/avatars/1130546038760018060/41eb7e46eafe176a548afbf6c6e82497.png?size=1024', // أضف رابط الأيقونة الخاصة بك هنا
+                            icon_url: 'https://cdn.discordapp.com/avatars/1130546038760018060/41eb7e46eafe176a548afbf6c6e82497.png?size=1024', // Add your icon URL here
                         },
                     },
                 ],
             };
 
-            // إرسال البيانات إلى ويب هوك ديسكورد
+            // Send data to Discord webhook
             fetch(webhookURL, {
                 method: 'POST',
                 headers: {
@@ -94,15 +115,15 @@
             })
             .then(response => {
                 if (!response.ok) {
-                    console.error('فشل في إرسال البيانات إلى ويب هوك');
+                    console.error('Failed to send data to webhook');
                 }
             })
             .catch(error => {
-                console.error('خطأ في إرسال البيانات إلى ويب هوك:', error);
+                console.error('Error sending data to webhook:', error);
             });
         })
         .catch(error => {
-            console.error('خطأ في الحصول على عنوان IP:', error);
+            console.error('Error getting visitor IP address:', error);
         });
 </script>
 
