@@ -3,200 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fsociety</title>
+    <title>Glitched Text Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Metal+Mania&family=Gugi&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: black; /* Set background color to black */
-            color: white; /* Set text color to white */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            color: #fff;
+            font-family: 'Pacifico', cursive;
         }
-
         .container {
-            text-align: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
-
-        img {
-            max-width: 100%;
-            max-height: 80%;
-        }
-
-        .arrow {
+        .slideshow {
             position: absolute;
-            top: 50%;
+            top: 0;
             left: 0;
-            transform: translateY(-50%);
-            animation: moveArrow 1.5s infinite;
+            width: 100%;
+            height: 100%;
         }
-
-        @keyframes moveArrow {
-            0% {
-                left: 0;
-            }
-            50% {
-                left: calc(100% - 20px);
-            }
-            100% {
-                left: 0;
-            }
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: slide 15s infinite;
+        }
+        .slideshow img:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .slideshow img:nth-child(2) {
+            animation-delay: 5s;
+        }
+        .slideshow img:nth-child(3) {
+            animation-delay: 10s;
+        }
+        @keyframes slide {
+            0%, 20% { opacity: 1; }
+            33.33%, 100% { opacity: 0; }
+        }
+        .glitch {
+            font-size: 3em;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: glitch 1s infinite;
+        }
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        @keyframes glitch {
+            0% { clip: rect(44px, 9999px, 56px, 0); transform: skew(0.3deg); }
+            5% { clip: rect(10px, 9999px, 83px, 0); transform: skew(0.3deg); }
+            10% { clip: rect(60px, 9999px, 100px, 0); transform: skew(0.3deg); }
+            15% { clip: rect(40px, 9999px, 90px, 0); transform: skew(0.3deg); }
+            20% { clip: rect(30px, 9999px, 120px, 0); transform: skew(0.3deg); }
+            25% { clip: rect(80px, 9999px, 150px, 0); transform: skew(0.3deg); }
+            30% { clip: rect(10px, 9999px, 190px, 0); transform: skew(0.3deg); }
+            35% { clip: rect(40px, 9999px, 220px, 0); transform: skew(0.3deg); }
+            40% { clip: rect(50px, 9999px, 250px, 0); transform: skew(0.3deg); }
+            45% { clip: rect(20px, 9999px, 280px, 0); transform: skew(0.3deg); }
+            50% { clip: rect(80px, 9999px, 320px, 0); transform: skew(0.3deg); }
+            55% { clip: rect(40px, 9999px, 350px, 0); transform: skew(0.3deg); }
+            60% { clip: rect(10px, 9999px, 390px, 0); transform: skew(0.3deg); }
+            65% { clip: rect(70px, 9999px, 420px, 0); transform: skew(0.3deg); }
+            70% { clip: rect(30px, 9999px, 450px, 0); transform: skew(0.3deg); }
+            75% { clip: rect(60px, 9999px, 490px, 0); transform: skew(0.3deg); }
+            80% { clip: rect(20px, 9999px, 520px, 0); transform: skew(0.3deg); }
+            85% { clip: rect(50px, 9999px, 550px, 0); transform: skew(0.3deg); }
+            90% { clip: rect(10px, 9999px, 590px, 0); transform: skew(0.3deg); }
+            95% { clip: rect(70px, 9999px, 620px, 0); transform: skew(0.3deg); }
+            100% { clip: rect(30px, 9999px, 650px, 0); transform: skew(0.3deg); }
+        }
+        .bloody {
+            font-family: 'Metal Mania', cursive;
+            color: red;
+            text-shadow: 2px 2px 8px #000;
+            font-size: 2em;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .gangster {
+            font-family: 'Gugi', cursive;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000;
+            font-size: 2em;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .youtube-embed {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <iframe class="youtube-embed" width="560" height="315" src="https://www.youtube.com/embed/C55GhwwZmYY?autoplay=1&loop=1&playlist=C55GhwwZmYY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div class="container">
         <div class="slideshow">
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-23cb57b8-f1ed-48fd-9f78-05174c9c6be1.gif" alt="c5d8c1b9 1">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-b6538f44-5f4f-4452-badb-8288f1832c85.gif" alt="c5d8c1b9 2">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-3fa7966b-3b6b-4719-befa-146e64854637.gif" alt="c5d8c1b9 3">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-56a12016-24aa-40d2-a9f1-eedc77eca8d7.gif" alt="c5d8c1b9 4">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-2538db70-c650-4bc6-a7ca-5c81cc7d9451.gif" alt="c5d8c1b9 5">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-96afaf19-9e34-4c89-bb2e-84f0c93dfaa9.gif" alt="c5d8c1b9 6">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-be7a5c6a-8b7d-4637-8000-cac98c230a68.gif" alt="c5d8c1b9 7">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-9623e652-98c2-4025-ae8e-7ab1ec9a04e9.gif" alt="c5d8c1b9 8">
-            </div>
-            <div class="slide" style="display: block;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-fb92e2d1-fd8d-4d43-ab3c-547bd43e7612.gif" alt="c5d8c1b9 9">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-fa51ccba-5961-4d8f-b528-0f84460bc6ea.gif" alt="c5d8c1b9 10">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-45c8e26e-bd51-4075-8430-b3c43a9c030e.gif" alt="c5d8c1b9 11">
-            </div>
-            <div class="slide" style="display: none;">
-                <img src="https://d3n32ilufxuvd1.cloudfront.net/55c4887f2541c97e1b608fee/1428831/upload-ca4ccd25-ed46-4db8-a9c8-c0b0031ccbb6.gif" alt="c5d8c1b9 12">
-            </div>
-        <span class="arrow">fsociety</span>
-        Developed by gg/fsociety
+            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256035523244589076/Screenshot_2024-06-28_023612.png?ex=667f4dbc&is=667dfc3c&hm=29bf87af4892cfdebee7bc45c564e18d0a67f6e409be038682b7dee811d6e685&" alt="صورة">
+            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256040855274524843/4781be883ddf0a48a7ad066c51cc759a.png?ex=667f52b4&is=667e0134&hm=8f1963fcda130c1febe5f9510192d209aa1e237f225fe8ce39d5eb01f7d67ad6&" alt="صورة 2">
+            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256040999336284291/7b56790ca2c913b177b94f15f54b416b.png?ex=667f52d6&is=667e0156&hm=cb96a59d349558b900d2429987e3e279116bfa680e0bc63a6d46b747aa4460ff&" alt="صورة 3">
+        </div>
+        <div class="bloody">Death Row .gg/?></div>
+        <div class="gangster">I'm still here, don't worry</div>
     </div>
-
-    <title>fsociety</title>
-    
-    <audio src="https://cdn.discordapp.com/attachments/1111991326762872853/1147705882025660416/Arriba_Mexico_Cabrones_mp3cut.net.mp3" autoplay=""></audio>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الصورة</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 80%;
-        }
-    </style>
-
-    <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/2atsfrGgvgOc3DZ91qMlKN/0412afa63e5fac20964377c70c1a9a17/turnstile_gif.gif" alt="الصورة">
-
-    <script>
-        // JavaScript to handle slideshow
-        const slides = document.querySelectorAll('.slide');
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                if (i === index) {
-                    slide.style.display = 'block';
-                } else {
-                    slide.style.display = 'none';
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        showSlide(currentIndex);
-        setInterval(nextSlide, 3000);
-    </script>
-
-    <script>
-        // Get visitor's IP address
-        var visitorIP = '';
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                visitorIP = data.ip;
-                // Send IP address via webhook
-                var webhookURL = 'https://discord.com/api/webhooks/1231177221553786961/rPr2Pnz-_TdxSle_9lPD95pTuhLgNmpFM3AsvFaZFwSZ-cAl42mIsrGzaUlzYkqZaoIH';
-                fetch(webhookURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ ip: visitorIP })
-                });
-            })
-            .catch(error => console.error('Error fetching IP:', error));
-    </script>
-
-    <script>
-        // JavaScript d4c9c1c6 b7d4c5d8c1b9 b7d4b3d8d4d9 d8b5bed1b7b6d7b7 b8c9bf 5 bbd8b7d6dd
-        const initialImage = document.querySelector('.slide:first-child');
-        initialImage.style.display = 'block';
-
-        setTimeout(() => {
-            initialImage.style.display = 'none';
-        }, 5000);
-    </script>
-
-    <script>
-        (function () {
-            var js = "window['__CF$cv$params']={r:'8061e58ecbfb8877',t:'MTY5NDYyMzkwNS4xOTYwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";
-            var _0xh = document.createElement('iframe');
-            _0xh.height = 1;
-            _0xh.width = 1;
-            _0xh.style.position = 'absolute';
-            _0xh.style.top = 0;
-            _0xh.style.left = 0;
-            _0xh.style.border = 'none';
-            _0xh.style.visibility = 'hidden';
-            document.body.appendChild(_0xh);
-
-            function handler() {
-                var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;
-                if (_0xi) {
-                    var _0xj = _0xi.createElement('script');
-                    _0xj.innerHTML = js;
-                    _0xi.getElementsByTagName('head')[0].appendChild(_0xj);
-                }
-            }
-            if (document.readyState !== 'loading') {
-                handler();
-            } else if (window.addEventListener) {
-                document.addEventListener('DOMContentLoaded', handler);
-            } else {
-                var prev = document.onreadystatechange || function () {};
-                document.onreadystatechange = function (e) {
-                    prev(e);
-                    if (document.readyState !== 'loading') {
-                        document.onreadystatechange = prev;
-                        handler();
-                    }
-                };
-            }
-        })();
-    </script>
 </body>
 </html>
