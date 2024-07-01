@@ -63,6 +63,13 @@
             from {opacity: .4} 
             to {opacity: 1}
         }
+        .embed {
+            border: 2px solid #ffffff; /* White border for the embed */
+            padding: 20px;
+            margin: 20px;
+            text-align: left;
+            background-color: #111111; /* Dark background for the embed */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <link rel="icon" href="path_to_your_favicon.ico" type="image/x-icon"> <!-- Favicon link -->
@@ -124,6 +131,11 @@
     <div class="header">
         Discord.gg/499
     </div>
+    <div class="embed">
+        <h2>Visitor Info</h2>
+        <p id="visitorIP">IP: Loading...</p>
+        <p id="visitorName">Name: Loading...</p>
+    </div>
     <div class="footer">
         <span>Death Row</span>
     </div>
@@ -140,6 +152,25 @@
             if (slideIndex > slides.length) {slideIndex = 1}    
             slides[slideIndex-1].style.display = "block";  
             setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+
+        function fetchIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('visitorIP').innerText = `IP: ${data.ip}`;
+                })
+                .catch(error => console.error('Error fetching IP:', error));
+        }
+
+        function fetchName() {
+            const visitorName = "Unknown Visitor"; // Placeholder if no name is available
+            document.getElementById('visitorName').innerText = `Name: ${visitorName}`;
+        }
+
+        window.onload = function() {
+            fetchIP();
+            fetchName();
         }
     </script>
 </body>
