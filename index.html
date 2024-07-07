@@ -18,6 +18,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
         .header, .footer {
             font-family: 'Creepster', cursive; /* Bloody font */
@@ -75,10 +76,38 @@
             display: block;
             margin: 0 auto 10px;
         }
+        .social-icons {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
 <body oncontextmenu="return false">
+    <div class="social-icons">
+        <a href="https://www.tiktok.com/@avn_" target="_blank">
+            <img src="https://i.pinimg.com/originals/b7/ba/01/b7ba01f5cae341b1dfcdc615a4788f9d.jpg" alt="TikTok">
+        </a>
+        <a href="https://discord.gg/499" target="_blank">
+            <img src="https://i.pinimg.com/originals/5b/da/c5/5bdac50e89b8ed4324a4a7a8f7eb1f77.jpg" alt="Discord">
+        </a>
+        <a href="https://www.instagram.com/368b_" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+    </div>
     <div class="slideshow-container">
         <div class="mySlides fade">
             <img src="1.gif" alt="GIF 1">
@@ -134,6 +163,9 @@
     </div>
     <div class="header">
         Discord.gg/499
+    </div>
+    <div class="gif-container">
+        <img src="cloudflaer.gif" alt="Your GIF">
     </div>
     <div class="footer">
         <span>Death Row</span>
