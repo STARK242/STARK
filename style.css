@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 2em;
+    background-image: url('black-ops-background.jpg'); /* ضع صورة خلفية مناسبة هنا */
+    background-size: cover;
+    background-position: center;
+    color: #f0c674;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.about, .gallery {
+    padding: 2em;
+    margin: 2em 0;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+.about h2, .gallery h2 {
+    color: #f0c674;
+    margin-bottom: 1em;
+}
+
+.gallery .images {
+    display: flex;
+    gap: 1em;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 300px;
+    border: 3px solid #f0c674;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #222;
+    color: #777;
+    font-size: 0.9em;
+}
